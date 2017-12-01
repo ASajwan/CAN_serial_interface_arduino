@@ -1,0 +1,238 @@
+
+/begin PROJECT CAN_Comm_Trial
+       "CAN communication with PUMA by Ashish Sajwan"
+
+       /begin MODULE CAN_PUMA
+       	      "CAN PUMA"
+       	      
+	      /begin MOD_COMMON
+	      	     "Module-wide parameters"
+	      	     BYTE_ORDER MSB_LAST /* little endian (Intel) byte order */
+	      /end MOD_COMMON
+
+	      /begin IF_DATA ASAP1B_CAN
+	      	      TP_BLOB 250	 /* 250 kBit/s for this node */
+	      /end IF_DATA
+		  
+		  /begin CHARACTERISTIC MXRM_CMD
+		     "Mixer Run Mode command from PUMA"
+		     VALUE   	    		/* type */
+		     0 				/* ECU address, ignored */
+		     NULL			/* deposit, ignored */
+		     0.1			/* maxdiff, ignored */
+		     CONV_ONE			/* conversion method */
+		     0.0			/* lower limit, ignored */
+		     3.0 			/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN  /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MXRM_CMD" /* message name */
+					   0x00000065  	  		    /* CAN id */
+		     		   1		  		    /* message bytes [0,8] */
+		     		   "PUMA" 	  		    /* sender name */
+		    		   0 		  		    /* value start bit  [0,63] */
+		     		   8 		  		    /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end CHARACTERISTIC
+	      
+		  
+		  /begin CHARACTERISTIC MXRPT_CMD
+		     "Mixer Target Pressure command from PUMA"
+		     VALUE   	    		/* type */
+		     0 				/* ECU address, ignored */
+		     NULL			/* deposit, ignored */
+		     0.1			/* maxdiff, ignored */
+		     CONV_ONE			/* conversion method */
+		     0.0			/* lower limit, ignored */
+		     3.0 			/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN  /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MXRPT_CMD" /* message name */
+					   0x00000067  	  		    /* CAN id */
+		     		   1		  		    /* message bytes [0,8] */
+		     		   "PUMA" 	  		    /* sender name */
+		    		   0 		  		    /* value start bit  [0,63] */
+		     		   8 		  		    /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end CHARACTERISTIC
+		  
+		  /begin CHARACTERISTIC MXRFF_CMD
+		     "Mixture flow command from PUMA"
+		     VALUE   	    		/* type */
+		     0 				/* ECU address, ignored */
+		     NULL			/* deposit, ignored */
+		     0.1			/* maxdiff, ignored */
+		     CONV_ONE			/* conversion method */
+		     0.0			/* lower limit, ignored */
+		     3.0 			/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN  /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MXRFF_CMD" /* message name */
+					   0x00000069  	  		    /* CAN id */
+		     		   2		  		    /* message bytes [0,8] */
+		     		   "PUMA" 	  		    /* sender name */
+		    		   0 		  		    /* value start bit  [0,63] */
+		     		   16		  		    /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end CHARACTERISTIC
+		  
+		  /begin CHARACTERISTIC MXMF_METHANE
+		     "Methane Gas mass fraction command from PUMA"
+		     VALUE   	    		/* type */
+		     0 				/* ECU address, ignored */
+		     NULL			/* deposit, ignored */
+		     0.1			/* maxdiff, ignored */
+		     CONV_ONE			/* conversion method */
+		     0.0			/* lower limit, ignored */
+		     3.0 			/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN  /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MXMF_CMD" /* message name */
+					   0x0000006B  	  		    /* CAN id */
+		     		   1		  		    /* message bytes [0,8] */
+		     		   "PUMA" 	  		    /* sender name */
+		    		   0 		  		    /* value start bit  [0,63] */
+		     		   8 		  		    /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end CHARACTERISTIC
+		  
+		  /begin CHARACTERISTIC MXMF_CNG
+		     "CNG mass fraction command from PUMA"
+		     VALUE   	    		/* type */
+		     0 				/* ECU address, ignored */
+		     NULL			/* deposit, ignored */
+		     0.1			/* maxdiff, ignored */
+		     CONV_ONE			/* conversion method */
+		     0.0			/* lower limit, ignored */
+		     3.0 			/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN  /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MXMF_CMD" /* message name */
+					   0x0000006D  	  		    /* CAN id */
+		     		   1		  		    /* message bytes [0,8] */
+		     		   "PUMA" 	  		    /* sender name */
+		    		   0 		  		    /* value start bit  [0,63] */
+		     		   8 		  		    /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end CHARACTERISTIC
+		  
+		  /begin CHARACTERISTIC MXMF_PROPANE
+		     "Propane Gas mass fraction command from PUMA"
+		     VALUE   	    		/* type */
+		     0 				/* ECU address, ignored */
+		     NULL			/* deposit, ignored */
+		     0.1			/* maxdiff, ignored */
+		     CONV_ONE			/* conversion method */
+		     0.0			/* lower limit, ignored */
+		     3.0 			/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN  /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MXMF_CMD" /* message name */
+					   0x0000006F  	  		    /* CAN id */
+		     		   1		  		    /* message bytes [0,8] */
+		     		   "PUMA" 	  		    /* sender name */
+		    		   0 		  		    /* value start bit  [0,63] */
+		     		   8 		  		    /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end CHARACTERISTIC
+		  
+		  /begin CHARACTERISTIC MXMF_ETHANE
+		     "Ethane Gas mass fraction command from PUMA"
+		     VALUE   	    		/* type */
+		     0 				/* ECU address, ignored */
+		     NULL			/* deposit, ignored */
+		     0.1			/* maxdiff, ignored */
+		     CONV_ONE			/* conversion method */
+		     0.0			/* lower limit, ignored */
+		     3.0 			/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN  /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MXMF_CMD" /* message name */
+					   0x00000071  	  		    /* CAN id */
+		     		   1		  		    /* message bytes [0,8] */
+		     		   "PUMA" 	  		    /* sender name */
+		    		   0 		  		    /* value start bit  [0,63] */
+		     		   8 		  		    /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end CHARACTERISTIC
+		  
+	      /begin MEASUREMENT GAUGE_PRESSURE
+	      	     "Pressure measurement value from the GasMixer"
+		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
+		     CONV_ONE		/* conversion method */
+		     0			/* resolution, ignored */
+		     0.0 		/* accuracy, ignored */
+		     0.0 		/* lower limit, ignored */
+		     3.0		/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "GAUGE_PRESSURE" /* message name, ignored */
+		     		   0x00000066  		      /* CAN id */
+		     		   1		  	      /* message bytes [0,8] */
+		     		   "GasMixer" 	  	      /* sender name */
+		    		   0 		  	      /* value start bit  [0,63] */
+		     		   8 		  	      /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end MEASUREMENT
+		  
+		  /begin MEASUREMENT MASS_FLOW
+	      	     "Mass flow measurement values from the GasMixer"
+		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
+		     CONV_ONE		/* conversion method */
+		     0			/* resolution, ignored */
+		     0.0 		/* accuracy, ignored */
+		     0.0 		/* lower limit, ignored */
+		     3.0		/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MASS_FLOW" /* message name, ignored */
+		     		   0x00000068  		      /* CAN id */
+		     		   1		  	      /* message bytes [0,8] */
+		     		   "GasMixer" 	  	      /* sender name */
+		    		   0 		  	      /* value start bit  [0,63] */
+		     		   8 		  	      /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end MEASUREMENT
+
+		  /begin MEASUREMENT ERR
+	      	     "Error flag from the GasMixer"
+		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
+		     CONV_ONE		/* conversion method */
+		     0			/* resolution, ignored */
+		     0.0 		/* accuracy, ignored */
+		     0.0 		/* lower limit, ignored */
+		     3.0		/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "ERR" /* message name, ignored */
+		     		   0x0000006A  		      /* CAN id */
+		     		   1		  	      /* message bytes [0,8] */
+		     		   "GasMixer" 	  	      /* sender name */
+		    		   0 		  	      /* value start bit  [0,63] */
+		     		   8 		  	      /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end MEASUREMENT
+	      
+
+	      /begin COMPU_METHOD CONV_ONE
+		     "Conversion, identity" /* description */
+		     RAT_FUNC	  	    /* conversion type */
+		     "%4.2"		    /* display format, ignored */
+		     "1"		    /* physical unit, ignored */
+		     COEFFS 0 1 0 0 0 1	    /* [a,b,c,d,e,f] in (ax^2+bx+c)/(dx^2+ex+f) */
+	      /end COMPU_METHOD
+
+	      
+
+       /end MODULE
+
+/end PROJECT
