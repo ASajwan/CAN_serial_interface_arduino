@@ -182,7 +182,7 @@
 		     /end IF_DATA
 	      /end MEASUREMENT
 		  
-		  /begin MEASUREMENT MASS_FLOW
+		  /begin MEASUREMENT MASS_FLOW_0
 	      	     "Mass flow measurement values from the GasMixer"
 		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
 		     CONV_ONE		/* conversion method */
@@ -192,12 +192,92 @@
 		     3.0		/* upper limit, ignored */
 		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
 		     	    /begin KP_BLOB
-		     	    	   "MASS_FLOW" /* message name, ignored */
+		     	    	   "MASS_FLOW_0" /* message name, ignored */
 		     		   0x00000068  		      /* CAN id */
-		     		   1		  	      /* message bytes [0,8] */
+		     		   2		  	      /* message bytes [0,8] */
 		     		   "GasMixer" 	  	      /* sender name */
 		    		   0 		  	      /* value start bit  [0,63] */
-		     		   8 		  	      /* value bit length [1,64] */
+		     		   16 		  	      /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end MEASUREMENT
+		  
+		  /begin MEASUREMENT MASS_FLOW_1
+	      	     "Mass flow measurement values from the GasMixer"
+		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
+		     CONV_ONE		/* conversion method */
+		     0			/* resolution, ignored */
+		     0.0 		/* accuracy, ignored */
+		     0.0 		/* lower limit, ignored */
+		     3.0		/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MASS_FLOW_1" /* message name, ignored */
+		     		   0x0000006A  		      /* CAN id */
+		     		   2		  	      /* message bytes [0,8] */
+		     		   "GasMixer" 	  	      /* sender name */
+		    		   0 		  	      /* value start bit  [0,63] */
+		     		   16 		  	      /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end MEASUREMENT
+		  
+		  /begin MEASUREMENT MASS_FLOW_2
+	      	     "Mass flow measurement values from the GasMixer"
+		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
+		     CONV_ONE		/* conversion method */
+		     0			/* resolution, ignored */
+		     0.0 		/* accuracy, ignored */
+		     0.0 		/* lower limit, ignored */
+		     3.0		/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MASS_FLOW_2" /* message name, ignored */
+		     		   0x0000006C  		      /* CAN id */
+		     		   2		  	      /* message bytes [0,8] */
+		     		   "GasMixer" 	  	      /* sender name */
+		    		   0 		  	      /* value start bit  [0,63] */
+		     		   16 		  	      /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end MEASUREMENT
+		  
+		  /begin MEASUREMENT MASS_FLOW_3
+	      	     "Mass flow measurement values from the GasMixer"
+		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
+		     CONV_ONE		/* conversion method */
+		     0			/* resolution, ignored */
+		     0.0 		/* accuracy, ignored */
+		     0.0 		/* lower limit, ignored */
+		     3.0		/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MASS_FLOW_3" /* message name, ignored */
+		     		   0x0000006E  		      /* CAN id */
+		     		   2		  	      /* message bytes [0,8] */
+		     		   "GasMixer" 	  	      /* sender name */
+		    		   0 		  	      /* value start bit  [0,63] */
+		     		   16 		  	      /* value bit length [1,64] */
+		     	    /end KP_BLOB
+		     /end IF_DATA
+	      /end MEASUREMENT
+		  
+		  /begin MEASUREMENT MASS_FLOW_4
+	      	     "Mass flow measurement values from the GasMixer"
+		     UWORD		/* data type unsigned word 2 bytes, 16 bits */
+		     CONV_ONE		/* conversion method */
+		     0			/* resolution, ignored */
+		     0.0 		/* accuracy, ignored */
+		     0.0 		/* lower limit, ignored */
+		     3.0		/* upper limit, ignored */
+		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
+		     	    /begin KP_BLOB
+		     	    	   "MASS_FLOW_4" /* message name, ignored */
+		     		   0x00000070  		      /* CAN id */
+		     		   2		  	      /* message bytes [0,8] */
+		     		   "GasMixer" 	  	      /* sender name */
+		    		   0 		  	      /* value start bit  [0,63] */
+		     		   16 		  	      /* value bit length [1,64] */
 		     	    /end KP_BLOB
 		     /end IF_DATA
 	      /end MEASUREMENT
@@ -213,7 +293,7 @@
 		     /begin IF_DATA ASAP1B_CAN /* define raw-CAN access */
 		     	    /begin KP_BLOB
 		     	    	   "ERR" /* message name, ignored */
-		     		   0x0000006A  		      /* CAN id */
+		     		   0x00000072  		      /* CAN id */
 		     		   1		  	      /* message bytes [0,8] */
 		     		   "GasMixer" 	  	      /* sender name */
 		    		   0 		  	      /* value start bit  [0,63] */
